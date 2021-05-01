@@ -16,7 +16,7 @@ app = FastAPI()
 
 
 @app.post("/register")
-def register_post(person: Person):
+def register_post(response: Response, person: Person):
     
     register_date = date.today()
     print(register_date)
@@ -37,6 +37,7 @@ def register_post(person: Person):
         "vaccination_date": vaccination_date
     }
 
+    response.status_code = status.HTTP_201_CREATED
 
     return dict_new
 
