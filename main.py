@@ -21,9 +21,24 @@ def register_post(response: Response, person: Person):
     register_date = date.today()
     print(register_date)
     #print(type(register_date))
-    name_len = len(person.name)
-    surname_len = len(person.surname)
+    new_name = []
+    new_surname = []
+    for x in person.name:
+        if x.isalpha():
+            new_name.append(x)
+        else:
+            continue
     
+    for y in person.surname:
+        if y.isalpha():
+            new_surname.append(y)
+        else:
+            continue
+
+    name_len = len(new_name)
+    surname_len = len(new_surname)
+    
+
     vaccination_date = register_date + timedelta(name_len) + timedelta(surname_len)
 
     Counter.id += 1
